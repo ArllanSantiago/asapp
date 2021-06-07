@@ -1,15 +1,15 @@
 import { Output } from '@angular/core';
 import { Component } from '@angular/core';
-
 @Component({
-  selector: 'app-root',
+  selector: 'app-root',  
   templateUrl: './app.component.html',
  /* styleUrls: ['./app.component.sass']*/
 })
-export class AppComponent {  
+export class AppComponent {   
+
   systemDetail = {
     title:"AS-Solution"
-    ,version:"string"
+    ,version:"1.0.0"
     ,logo:"assets/AdminLTELogo.png"
     ,router:"index3.html"
   }  

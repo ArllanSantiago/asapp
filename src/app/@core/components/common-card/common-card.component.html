@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">{{cardHeader.title}}</h5>
+        <div *ngFor="let tool of cardHeader.tools" class="card-tools">
+            <div [ngSwitch]="tool.action.type">
+                <div *ngSwitchCase="'dropdown'" class="btn-group">
+                    <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                        <i class="fas fa-wrench"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">Another action</a>
+                        <a href="#" class="dropdown-item">Something else here</a>
+                        <a class="dropdown-divider"></a>
+                        <a href="#" class="dropdown-item">Separated link</a>
+                    </div>
+                </div>
+                <button *ngSwitchCase="'collapse'" type="button" class="btn btn-tool" data-card-widget="collapse"
+                    [disabled]="!tool.enable">
+                    <i [ngClass]="tool.action.type === 'collapse'? 'fas fa-minus':'fas fa-times'"></i>
+                </button>
+                <button *ngSwitchCase="'remove'" type="button" class="btn btn-tool" data-card-widget="remove"
+                    [disabled]="!tool.enable">
+                    <i [ngClass]="tool.action.type === 'collapse'? 'fas fa-minus':'fas fa-times'"></i>
+                </button>
+                <button *ngSwitchDefault type="button" class="btn btn-tool" [disabled]="!tool.enable">
+                    <i class="tool.action.icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="card-footer">
+        FOOTER
+        <!-- /.card-footer -->
+    </div>
+</div>    
