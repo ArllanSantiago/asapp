@@ -1,15 +1,27 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
+import { Component, NgModule } from '@angular/core';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+
 
 const routes: Routes = [
   {
-    path: "Home", component: HomeComponent
+    path: "auth"
+    , loadChildren: ()=> import('./auth/auth.module')
+     .then(m => m.AuthModule)
   }
+  ,{
+    path: "pages"
+    , loadChildren: ()=> import('./pages/pages.module')
+      .then(m => m.PagesModule)
+  }
+  ,  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth' }
 ];
+const config: ExtraOptions = {
+  useHash: false,
+};
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,config)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
